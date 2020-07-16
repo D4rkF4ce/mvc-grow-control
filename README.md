@@ -23,7 +23,7 @@ Control the MyStrom plugs via the internal network (HTTP), temperature &amp; hum
 - Fully implemented SqLite Database
 - DataCollector BackgroundTask to check device values every Minute
 - Data History Option
-- Treshold Values for Temperatur &amp; Humidity, sunset &amp; sunrise
+- Treshold Values for Temperatur &amp; Humidity, Sunset &amp; Sunrise
 - Mailalarm-Manager
 <br />
 <br />
@@ -58,9 +58,9 @@ We are still in a very early development phase. Please be careful with your powe
 <br />
 
 ## Release Plan
-Alpha Tests currently running on version 0.1.7502
+Alpha Tests currently running on version <b>0.1.7502</b> - AccessKey free
 <br />
-Beta Tests planned for AUG-2020 (feel free to join our beta program)
+Beta Tests planned for AUG-2020 (feel free to join our beta program &amp; claim your free AccessKey)
 <br />
 <br />
 
