@@ -13,13 +13,24 @@ WebTool used to control & monitor fans, a humdifier, watering, temperature and p
 - For auto watering, we use GARDENA (https://www.gardena.com/)
 <br />
 
-## Logic
+## What's working
 Control the MyStrom plugs via the internal network (HTTP), temperature &amp; humidity values are collected via the Shelly Cloud API (HTTPS + Auth. Token).
 <br />
-Improvement: Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp = 99 & hum = 48)
+- Read correct values from: MyStrom Plug (EU), Shelly H&amp;T Sensor via Cloud
+- Fully implemented SqLite Database
+- DataCollector BackgroundTask to check device values
+- Mailalarm
+<br />
+<br />
+
+## Improvements
+- Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp = 99 & hum = 48)
+- Port the whole solution to .NetCore 3.1 (Raspberry support)
+<br />
 <br />
 
 ## Preview UI
 <img src="preview.png" alt="preview" />
-
+<br />
+<br />
 
