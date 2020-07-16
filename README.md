@@ -29,8 +29,8 @@ Control the MyStrom plugs via the internal network (HTTP), temperature &amp; hum
 <br />
 
 ## Improvements
-- Create an API for Shelly which sends the values to this API with parameters according to shelly-docu (https://shelly-api-docs.shelly.cloud/#shelly-h-amp-t) 
-- Raspberry support with nginx: Port the whole solution to .NetCore 3.1
+- Create an API for Shelly which sends the values to this API with parameters according to shelly-docu <br />(https://shelly-api-docs.shelly.cloud/#shelly-h-amp-t) 
+- Raspberry support with nginx: Port the whole solution to .NetCore 3.1<br /> (https://thomaslevesque.com/2018/04/17/hosting-an-asp-net-core-2-application-on-a-raspberry-pi/)
 - CleanUp History after 7 days
 - Electricity forecast and costs
 - Update Bootstrap to latest version
@@ -45,9 +45,7 @@ Current UI development state, fully touch compatible in desktop and mobile respo
 <img src="preview.png" alt="preview" />
 <br />
 <br />
-Current work in progress (local branch) show plant details on button click:
-<br />
-Available in version 0.2.x
+Current work in progress (available in version 0.2.x) show plant details on button click:
 <br />
 <br />
 <img src="preview-plants.JPG" alt="preview" />
