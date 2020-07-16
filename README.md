@@ -19,13 +19,14 @@ Control the MyStrom plugs via the internal network (HTTP), temperature &amp; hum
 <br />
 - Read correct values from: MyStrom Plug (EU), Shelly H&amp;T Sensor via Cloud
 - Fully implemented SqLite Database
-- DataCollector BackgroundTask to check device values
-- Mailalarm
+- DataCollector BackgroundTask to check device values every Minute
+- Data History Option
+- Mailalarm-Manager
 <br />
 <br />
 
 ## Improvements
-- Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp = 99 & hum = 48)
+- Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp=99&hum=48)
 - Raspberry support with nginx: Port the whole solution to .NetCore 3.1
 <br />
 <br />
