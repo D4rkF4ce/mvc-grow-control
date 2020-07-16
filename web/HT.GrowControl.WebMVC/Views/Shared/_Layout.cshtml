@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" @Url.Content("~/content/images/favicon.ico")>
+    <link rel="icon" type="image/png" href="@Url.Content("~/content/images/logo-icon.png")" sizes="32x32">
+    <link rel="icon" type="image/png" href="@Url.Content("~/content/images/logo-icon.png")" sizes="96x96">
+
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/content/images/logo-icon.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/content/images/logo-icon.png")">
+    <link rel="apple-touch-icon" href="@Url.Content("~/content/images/logo-icon.png")">
+    <link rel="apple-touch-startup-image" href="@Url.Content("~/content/images/logo-icon.png")">
+
+    <title>@ViewBag.Title - GrowControl</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    <style>
+        @*body {
+            background-image: url('@Url.Content("~/content/images/wallpaper.jpg")')
+        }*@
+
+        body {
+            /*background-color: #202125;*/
+            background-color: whitesmoke;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @using Microsoft.AspNet.Identity
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("GrowControl Administrator - Produktiv Umgebung", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "font-size:14px; color: #ffffff;" })
+                }
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Startseite", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Info", "About", "Home")</li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>*@
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Meine ASP.NET-Anwendung</p>
+            </footer>*@
+    </div>
+
+
+</body>
+</html>

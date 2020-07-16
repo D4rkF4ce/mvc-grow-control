@@ -1,0 +1,442 @@
+﻿@model HT.GrowControl.WebMVC.Models.OverViewModel
+@{
+    ViewBag.Title = "Overview";
+}
+
+<meta http-equiv="refresh" content="20;">
+
+
+
+<script language="javascript" type="text/javascript">
+
+
+
+
+
+    $(document).ready(function () {
+
+        $("#btnHideDetails").hide();
+        $("#details").hide();
+
+        $('#customRange1').on('input', function () {
+            $('#outcustomRange1').html($(this).val());
+        });
+
+        $('#customRange2').on('input', function () {
+            $('#outcustomRange2').html($(this).val());
+        });
+
+        $("#btnShowDetails").click(function () {
+            $("#details").show();
+            $("#btnShowDetails").hide();
+            $("#btnHideDetails").show();
+        });
+
+        $("#btnHideDetails").click(function () {
+            $("#details").hide();
+            $("#btnHideDetails").hide();
+            $("#btnShowDetails").show();
+        });
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Grenzwerte Einstellung</h5>
+            </div>
+            <div class="modal-body">
+                <br />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <center>
+                            <label style="font-weight:normal;" for="customRange1">Temperatur min: <span id="outcustomRange1">18</span>°C</label>
+                            <input type="range" class="custom-range" id="customRange1" min="10" max="45" value="18">
+                            <br />
+                            <label style="font-weight:normal;" for="customRange1">Temperatur max: <span id="outcustomRange2">31</span>°C</label>
+                            <input type="range" class="custom-range" id="customRange2" value="31" min="10" max="45">
+                        </center>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-lg-6">
+                        <center>
+                            <label style="font-weight:normal;" for="customRange1">RLF (%) Min:</label>
+                            <input type="range" class="custom-range" id="customRange3">
+                            <br />
+                            <label style="font-weight:normal;" for="customRange2">RLF (%) Max:</label>
+                            <input type="range" class="custom-range" id="customRange4">
+                        </center>
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:130px;">
+                            <img src="~/content/images/growcontrol-logo.png" />
+                        </td>
+                        <td>
+                            <h3 class="lead">GrowControl v0.1<br /><span style="font-size:12px;">Fully automated system based on ASP.Net MVC</span></h3>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model.Temperature.CelsiusValue > 31.0)
+        {
+            <div class="alert alert-danger" role="alert">
+                <div class="pull-left">Achtung Temperatur zu hoch!</div>
+                <div class="pull-right"><small>[@DateTime.Now.ToString()]</small></div>
+                <br />
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <div class="pull-left">Dein Öko-System läuft stabil!</div>
+                <div class="pull-right"><small>[@DateTime.Now.ToString()]</small></div>
+                <br />
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.Temperature.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.Temperature.Name</b> <br />
+                                <span>Temp: </span>@Model.Temperature.TempInCelsius <br />
+                                <small><span class="@Model.Temperature.Info.Status">@Model.Temperature.Info.InfoMsg</span></small><br />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.Humidity.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.Humidity.Name</b> <br />
+                                <span>RLF: </span>@Model.Humidity.HumidityInPercent <br />
+                                <small><span class="@Model.Humidity.Info.Status">@Model.Humidity.Info.InfoMsg</span></small><br />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.Light.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.Light.Name</b> <br />
+                                <span>Aktiv: </span>@Model.Light.DeviceIsInUse <br />
+                                <span>Power: </span>@Model.Light.Power <br />
+                                @*<span>Temp: </span>@Model.Light.Temp <br />*@
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.FanIn.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.FanIn.Name</b> <br />
+                                <span>Aktiv: </span>@Model.FanIn.DeviceIsInUse <br />
+                                <span>Power: </span>@Model.FanIn.Power <br />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.Suction.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.Suction.Name</b> <br />
+                                <span>Aktiv: </span>@Model.Suction.DeviceIsInUse <br />
+                                <span>Power: </span>@Model.Suction.Power <br />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="@Url.Content(Model.Watering.Icon)" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>@Model.Watering.Name</b> <br />
+                                <span>Aktiv: </span>@Model.Watering.DeviceIsInUse <br />
+                                <span>Menge: </span>@Model.Watering.RainInMin <br />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    @*<div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <table>
+                        <tr>
+                            <td style="width:60px;">
+                                <img src="~/content/images/realtimedata.png" style="height: 40px;" />
+                            </td>
+                            <td>
+                                <div class="deviceInfo">
+                                    <b>Min / Max Verlauf</b> <br />
+                                    <span>Temp: min. 26°C / max. 32°C</span> <br />
+                                    <span>RLF: min. 30% / max. 45%</span><br />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="~/content/images/sunrise.png" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>Sunrise</b> <br />
+                                <span>22:00</span><br />
+                                <span>CET</span>
+                            </div>
+                        </td>
+                        <td style="width:50px;">
+                            <br />
+                        </td>
+                        <td style="width:60px;">
+                            <img src="~/content/images/sunset.png" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>Sunset</b> <br />
+                                <span>10:00</span><br />
+                                <span>CET</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            <img src="~/content/images/checkValues.png" style="height: 40px;" />
+                        </td>
+                        <td>
+                            <div class="deviceInfo">
+                                <b>Grenzwerte</b> <br />
+                                <span>@Model.TempMinMax</span> <br />
+                                <span>@Model.HumidityMinMax</span><br />
+                            </div>
+                        </td>
+                        @*<td style="width:50px;">
+                                <br />
+                            </td>
+                            <td>
+                                <div class="deviceInfo pull-right">
+                                    <button data-toggle="modal" data-target="#exampleModalCenter" style="height:40px;width:60px;"><img src="@Url.Content("~/content/images/settings.png")" style="height: 25px;" /></button>
+                                </div>
+                            </td>*@
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="col-lg-2">
+                    <button data-toggle="modal" class="btn btn-primary" data-target="#exampleModalCenter" style="height:40px;width:100%; margin-bottom:5px;">Einstellungen</button><br />
+                </div>
+                <div class="col-lg-2">
+                    <button id="btnShowHistory" type="button" class="btn btn-primary" style="height:40px;width:100%; margin-bottom:5px;">Historie</button><br />
+                </div>
+                <div class="col-lg-2">
+                    <button id="btnShowLog" type="button" class="btn btn-primary" style="height:40px;width:100%; margin-bottom:5px;">Log</button>
+                </div>
+                <div class="col-lg-4">
+                    <br />
+                </div>
+                <div class="col-lg-2">
+                    <button id="btnShowDetails" type="button" class="btn btn-primary" style="height:40px;width:100%;">Mehr</button>
+                    <button id="btnHideDetails" type="button" class="btn btn-primary" style="height:40px;width:100%;">Weniger</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="row">
+        <div class="col-md-12">
+            <button id="btnShowDetails" type="button" class="btn btn-primary" style="width:100%">Show more</button>
+            <button id="btnHideDetails" type="button" class="btn btn-primary" style="width:100%">Hide</button>
+        </div>
+    </div>*@
+
+<div class="row" id="details">
+
+    <br />
+
+    @for (int i = 0; i < Model.FlowersInBloom.Count; i++)
+    {
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-body">
+                    <table>
+                        <tr>
+                            <td style="width:60px;">
+                                <img src="~/content/images/flower.png" style="height: 40px;" />
+                            </td>
+                            <td>
+                                <div class="deviceInfo">
+                                    <b>@Model.FlowersInBloom[i].Name</b> <br />
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td colspan="3">
+                                                <small>Tage in Blüte</small>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span style="font-size: 16px;">@Model.FlowersInBloom[i].TimeToHarvest</span> <br />
+                                            </td>
+                                            <td style="width:18px;">
+                                                <br />
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <small>
+                                                        Start: @Model.FlowersInBloom[i].StartDate.ToShortDateString() <br />
+                                                        Ende: @Model.FlowersInBloom[i].EndDate.ToShortDateString()
+                                                    </small>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
