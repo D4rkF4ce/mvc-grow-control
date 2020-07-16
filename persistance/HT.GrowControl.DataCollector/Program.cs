@@ -37,8 +37,6 @@ namespace HT.GrowControl.DataCollector
             {
                 Check_Temp_Hygro_Stats();
             }
-
-            //Console.WriteLine("FINISH!");
         }
 
         private static void CollectData()
@@ -188,14 +186,12 @@ namespace HT.GrowControl.DataCollector
             {
                 if (watering.DeviceIsInUse == "Ja")
                 {
-                    //Console.WriteLine("Watering is active");
                     _notifyGateway.CleanUpDeviceNotification();
                     _notifyGateway.AddDeviceNotification(5, DateTime.Now.ToString(), "success", DateTime.Now.ToString());
 
                 }
                 else
                 {
-                    //Console.WriteLine("Watering is not active");
                     //_notifyGateway.AddDeviceNotification(5, DateTime.Now.ToString(), "success", DateTime.Now.ToString());
                 }
 
