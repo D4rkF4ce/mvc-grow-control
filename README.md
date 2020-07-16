@@ -28,6 +28,9 @@ Control the MyStrom plugs via the internal network (HTTP), temperature &amp; hum
 ## Improvements
 - Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp=99&hum=48)
 - Raspberry support with nginx: Port the whole solution to .NetCore 3.1
+- CleanUp History after 7 days
+- Update Bootstrap to latest version
+- Implement jQueryUI
 <br />
 <br />
 
