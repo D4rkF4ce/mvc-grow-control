@@ -51,7 +51,9 @@ Current work in progress (local branch) show plant details on button click:
 <img src="preview-plants.JPG" alt="preview" />
 <br />
 <br />
-Please note: We are still in a very early development phase. Please be careful with your power cabling and timer. We accept no liability for damage to materials or plants.
+
+## Please Note
+We are still in a very early development phase. Please be careful with your power cabling and timer. We accept no liability for damage to materials or plants.
 <br />
 <br />
 
