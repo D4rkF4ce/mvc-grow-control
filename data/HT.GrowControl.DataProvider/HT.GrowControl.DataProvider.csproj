@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="MyStromConnector.cs" />
     <Compile Include="ShellyCloudResponse.cs" />
-    <Compile Include="ShellyResponse.cs" />
     <Compile Include="MyStromResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShellyConnector.cs" />
