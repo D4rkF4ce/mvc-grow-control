@@ -60,9 +60,9 @@ We are still in a very early development phase. Please be careful with your powe
 ## Release Plan
 Alpha Tests currently running on version <b>0.1.7502</b> - AccessKey free
 <br />
-Beta Tests planned for AUG-2020 (feel free to join our beta program &amp; claim your free Beta-AccessKey)
+Beta Tests planned for AUG-2020
 <br />
-Productive Release planned for DEC-2020 (only possible with AccessKey &amp; subscriped users)
+First productive Release planned for SEP-2020
 <br />
 <br />
 
