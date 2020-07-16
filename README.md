@@ -13,3 +13,8 @@ WebTool used to control & monitor fans, a humdifier, watering, temperature and p
 
 ## Preview UI
 <img src="preview.png" alt="preview" />
+
+## Logic
+Control the MyStrom plugs via the internal network (HTTP), temperature &amp; humidity values are collected via the Shelly Cloud API (HTTPS + Auth. Token).
+<br />
+Improvement: Create an API for Shelly which sends the values to this API with parameters according shelly-docu (temp = 99 & hum = 48)
